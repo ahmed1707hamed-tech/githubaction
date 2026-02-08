@@ -1,11 +1,13 @@
 #!/bin/bash
+set -e
 
-# src/test.sh
+cd "$(dirname "$0")"
+
 EXPECTED="Hello, Test!"
 
-OUTPUT=$(node -e "console.log(require('./src/app')('Test'))")
+OUTPUT=$(node -e "console.log(require('./app')('Test'))")
 
-if [ "$OUTPUT" == "$EXPECTED" ]; then
+if [ "$OUTPUT" = "$EXPECTED" ]; then
   echo "✅ Test passed!"
   exit 0
 else
